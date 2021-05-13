@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Rima_Sony>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Rima_Sony>
+    </modules>
+</config>
