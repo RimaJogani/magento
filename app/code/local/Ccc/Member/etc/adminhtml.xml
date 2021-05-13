@@ -1,0 +1,63 @@
+<config>
+	<menu>
+		<eav>
+			<title>Eav</title>
+			<sort_order>201</sort_order>
+			<children>
+				<member>
+					<title>member</title>
+					<sort_order>101</sort_order>
+					<children>
+						<member>
+							<title>Manage member</title>
+							<sort_order>100</sort_order>
+							<action>*/member</action>
+						</member>
+						
+						<member_attribute>
+							<title>Manage Attribute</title>
+							<sort_order>100</sort_order>
+							<action>*/member_attribute</action>
+						</member_attribute>
+
+						<member_set>
+							<title>Manage Attribute set</title>
+							<sort_order>100</sort_order>
+							<action>*/member_set</action>
+						</member_set>
+
+					</children>
+				</member>
+			</children>
+		</eav>
+	</menu>
+	<acl>
+		<resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+			<admin>
+				<children>
+					<member translate="title">
+						<title>member</title>
+						<sort_order>100</sort_order>
+						<children>
+							<alert translate="title">
+								<title>Manage member</title>
+							</alert>
+
+							<alert translate="title">
+								<title>Manage Attribute</title>
+							</alert>
+
+							<alert translate="title">
+								<title>Manage Attribute set</title>
+							</alert>
+							
+						</children>
+					</member>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

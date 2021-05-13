@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<config>
+		<modules>
+			<Ccc_Member>
+				<version>0.0.2</version>
+			</Ccc_Member>
+		</modules>
+		<frontend>
+			<routers>
+				<member>
+					<use>standard</use>
+					<args>
+						<module>Ccc_Member</module>
+						<frontName>member</frontName>
+					</args>
+				</member>
+			</routers>
+		</frontend>
+		<global>
+			<models>
+				<member>
+					<class>Ccc_Member_Model</class>
+					<resourceModel>member_resource</resourceModel>
+				</member>
+				<member_resource>
+					<class>Ccc_Member_Model_Resource</class>
+					<entities>
+						<member>
+							<table>member</table>
+						</member>
+						<member_datetime>
+		                	<table>member_datetime</table>
+			            </member_datetime>
+			            <member_decimal>
+			                <table>member_decimal</table>
+			            </member_decimal>
+			            <member_int>
+			                <table>member_int</table>
+			            </member_int>
+			            <member_text>
+			                <table>member_text</table>
+			            </member_text>
+			            <member_varchar>
+			                <table>member_varchar</table>
+			            </member_varchar>
+			            <member_char>
+			                <table>member_char</table>
+			            </member_char>
+			            <eav_attribute>
+	                        <table>member_eav_attribute</table>
+	                    </eav_attribute>
+					</entities>
+				</member_resource>
+			</models>
+			<resources>
+				<member_setup>
+					<setup>
+						<module>Ccc_Member</module>
+						<class>Ccc_Member_Model_Resource_Setup</class>
+					</setup>
+				</member_setup>
+			</resources>
+
+			<helpers>
+				<member>
+					<class>Ccc_member_Helper</class>
+				</member>
+			</helpers>
+
+			<blocks>
+				<member>
+					<class>Ccc_Member_Block</class>
+				</member>
+			</blocks>
+
+	</global>
+
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<ccc_member>Ccc_Member_Adminhtml</ccc_member>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+
+	<adminhtml>
+	    <layout>
+	      <updates>
+	        <member>
+	          <file>member.xml</file>
+	        </member>
+	      </updates>
+	    </layout>
+  	</adminhtml>
+
+</config>
+	
