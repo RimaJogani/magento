@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Rima_Shippingmethod>
+            <version>1.0.0</version>
+        </Rima_Shippingmethod>
+    </modules>
+    <global>
+        <models>
+            <shippingmethod>
+                <class>Rima_Shippingmethod_Model</class>
+            </shippingmethod>
+        </models>
+        <helpers>
+            <shippingmethod>
+                <class>Rima_Shippingmethod_Helper</class>
+            </shippingmethod>
+        </helpers>
+        
+     </global>
+     <default>
+        <carriers>
+            <express>
+                <active>1</active>
+                <sallowspecific>0</sallowspecific>
+                <model>shippingmethod/express</model>
+                <name>express</name>
+                <price>50.00</price>
+                <title>Express</title>
+                <type>I</type>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <handling_type>F</handling_type>
+            </express>
+        </carriers>
+    </default>
+</config>
