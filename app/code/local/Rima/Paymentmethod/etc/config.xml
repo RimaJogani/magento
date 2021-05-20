@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Rima_Paymentmethod>
+            <version>1.0.0</version>
+        </Rima_Paymentmethod>
+    </modules>
+    <global>
+        <models>
+            <paymentmethod>
+                <class>Rima_Paymentmethod_Model</class>
+            </paymentmethod>
+        </models>
+        <helpers>
+            <paymentmethod>
+                <class>Rima_Paymentmethod_Helper</class>
+            </paymentmethod>
+        </helpers>
+        
+     </global>
+     <default>
+        <payment>
+            <cod>
+                <model>paymentmethod/cod</model>
+                <active>1</active>
+                <order_status>pending</order_status>
+                <title></title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </cod>
+        </payment>
+        
+    </default>
+</config>
