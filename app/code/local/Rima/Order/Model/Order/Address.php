@@ -1,0 +1,12 @@
+<?php
+class Rima_Order_Model_Order_Address extends Mage_Core_Model_Abstract
+{
+    protected function _construct()
+    {
+        $this->_init('order/order_address');
+        
+    }
+}
+
+
+?>

@@ -1,0 +1,68 @@
+<!-- <div style="float: right;"><?php //echo $this->getButtonsHtml(); ?><?php //echo $this->getButtonHtml(); ?></div> -->
+<div style="float: right">  
+      <a href="<?php echo $this->getUrl('order/adminhtml_order/index')?>"><button type="button"> Back</button></a>           
+      <a href="<?php echo $this->getUrl('order/adminhtml_order/saveorder',['id'=>$this->getRequest()->getParam('id')])?>"><button type="button" name="save"> Submit Order</button></a>
+ </div> 
+<h3><?php echo $this->getHeaderText(); ?></h3>
+             
+<hr>
+
+<div>
+  <!-- <div class="entry-edit">
+
+    <div class="entry-edit-head">
+      <div style="float: right;">
+        <button id="id_b24aefb9127869eaf32b724490cb8f61" title="producr" type="button" class="scalable add"  style=""><span><span><span>Please Select Product to Add Cart</span></span></span>
+        </button>
+      </div>
+      <h4 class="fieldset-legend ">Please Select Product to Add Cart</h4>
+    </div> 
+  </div> -->
+
+	<?php echo $this->getChildHtml('product'); ?>
+</div>
+<hr>
+<div>
+  <?php echo $this->getChildHtml('cartitem') ?>
+</div>
+<hr>
+<div>
+	<?php echo $this->getChildHtml('account'); ?>
+</div>
+<hr>
+<div style="display: flex;">
+    <div style="width:60%">
+      <?php echo $this->getChildHtml('billingaddress'); ?>
+    </div>
+    <div style="margin-left:20px; width:70%">
+       <?php echo $this->getChildHtml('shippingaddress'); ?>
+    </div>
+</div>
+<hr>
+<div style="display: flex;">
+    <div style="width:60%">
+      <?php echo $this->getChildHtml('paymentmethod'); ?>
+    </div>
+    <div style="margin-left:20px; width:70%">
+       <?php echo $this->getChildHtml('shippingmethod'); ?>
+    </div>
+</div>
+
+<div style="margin-left:470px; width:60%">
+  <?php echo $this->getChildHtml('total');?>
+  
+</div>
+
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+  var $j = jQuery.noConflict();
+  var mage = new Base();
+  // alert(1);
+</script> -->
+
+<script type="text/javascript">
+  document.getElementById('product_grid').style.display = 'none';
+  function productGrid(){
+    document.getElementById('product_grid').style.display = 'block';
+  }
+</script>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <order_adminhtml_order_index>
+        <reference name="content">
+            <block type="order/adminhtml_order"></block>
+        </reference>
+    </order_adminhtml_order_index>
+    <order_adminhtml_order_customer_index>
+        <reference name="content">
+            <block type="order/adminhtml_customer"></block>
+        </reference>
+
+    </order_adminhtml_order_customer_index>
+    <order_adminhtml_order_create_index>
+        <reference name="head">
+            <action method="addJs"><file>rima/mage.js</file></action>
+
+        </reference>
+        <reference name = "root">
+            <!-- Main Block  -->
+            <block type="order/adminhtml_order_create" name="content" template="order/create.phtml">
+                <!-- Product Block -->
+                <block type="order/adminhtml_order_create_product" name="product"  template="order/create/product.phtml">
+                    <block type="order/adminhtml_order_create_product_grid" name="product_grid">
+                    </block>
+                </block>
+                <!-- Cart Item -->
+                <block type="order/adminhtml_order_create_cartitem" name="cartitem"  template="order/create/cartitem.phtml">
+                </block>
+                <!-- Account Information -->
+                <block type="order/adminhtml_order_create_account" name="account"  template="order/create/account.phtml">
+                </block>
+                <!-- Billing Address -->
+                <block type="order/adminhtml_order_create_billingaddress" name="billingaddress"  template="order/create/billingaddress.phtml">
+                    <block type="order/adminhtml_order_create_billingaddress_form" name="billingaddress_form">
+                    </block>
+                </block>
+                <!-- Shipping Address -->
+                <block type="order/adminhtml_order_create_shippingaddress" name="shippingaddress"  template="order/create/shippingaddress.phtml">
+                    <block type="order/adminhtml_order_create_shippingaddress_form" name="shippingaddress_form">
+                    </block>
+                </block>
+                <!-- Payment Method -->
+                <block type="order/adminhtml_order_create_paymentmethod" name="paymentmethod"  template="order/create/paymentmethod.phtml">
+                    <block type="order/adminhtml_order_create_paymentmethod_grid" template="order/create/paymentmethod/grid.phtml" name="paymentmethod_grid">
+                    </block>
+                </block>
+                <!-- Shipping Method -->
+                 <block type="order/adminhtml_order_create_shippingmethod" name="shippingmethod"  template="order/create/shippingmethod.phtml">
+                    <block type="order/adminhtml_order_create_shippingmethod_grid" template="order/create/shippingmethod/grid.phtml" name="shippingmethod_grid">
+                    </block> 
+                </block>
+                <block type="order/adminhtml_order_create_total" name="total" template="order/create/total.phtml">
+                </block>
+            </block>
+        </reference>
+    </order_adminhtml_order_create_index>
+</layout>
+
+

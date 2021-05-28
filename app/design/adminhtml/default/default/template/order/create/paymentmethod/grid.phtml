@@ -1,0 +1,23 @@
+<?php $paymentMethodTitle=$this->getPayemntMethodTitle(); ?>
+<?php $cart = $this->getCart();?>
+<?php if($cart):?>
+	<?php $cart_id = $cart->getId();?>
+	<?php $paymentcode = $cart->payment_method_code;?>
+<?php endif;?>
+<form id="paymentform" method="post" action="<?php echo $this->getUrl('order/adminhtml_order_create/paymentmethod',['customer_id'=>$this->getRequest()->getParam('id'),'cart_id'=> $cart_id]);?>">
+<?php echo $this->getBlockHtml('formkey');?>
+<div class="entry-edit">
+    <div class="entry-edit-head"><h4>Payment Method</h4></div>
+    <fieldset>
+        <span class="nowrap" style="font-size:10px;">
+        	<?php foreach($paymentMethodTitle as $key => $value):?>
+        		<?php    //echo $key;?>
+			<input type="radio" name="paymentmethod" value="<?php echo $key?>" <?php echo $paymentcode == $key ? "checked" : "" ?>><?php echo $value->getTitle();?><br>
+   			<?php endforeach;?>	
+        </span>
+        <div class="form-buttons-left">
+	    	<button type="submit" form="paymentform"><span>Save Method</span></button>
+		</div>
+    </fieldset>
+</div>
+</form>

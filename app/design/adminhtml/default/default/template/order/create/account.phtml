@@ -1,0 +1,34 @@
+<?php $customer = $this->getCustomer();?>
+<?php //echo "<pre>";print_r($customer);?>
+
+<div id="order-form_account">
+	<div class="entry-edit">
+    	<div class="entry-edit-head">
+        <h4 class="icon-head fieldset-legend head-account">Account Information</h4>
+    	</div>
+	    <div id="customer_account_fieds">
+	        <div class="fieldset " id="main">
+				<div class="hor-scroll">
+	                <table cellspacing="0" class="form-list">
+	        			<tbody>
+	        				
+							<tr>
+	    						<td class="label"><label for="name">Name</label></td>
+								<td class="value">
+	    							<input  value="<?php echo $customer->firstname.' '.$customer->lastname?>" class="validate-email input-text" disabled>            
+	    						</td>
+							</tr>
+							<tr>
+	    						<td class="label"><label for="email">Email</label></td>
+								<td class="value">
+	    							<input id="email" name="" value="<?php echo $customer->email; ?>" class="validate-email input-text"  disabled>            
+	    						</td>
+							</tr>
+	       				</tbody>
+	    			</table>
+	        	</div>
+	    	</div>
+	    </div>
+    
+	</div>
+</div>

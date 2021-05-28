@@ -1,0 +1,39 @@
+
+<div class="box-right entry-edit">
+    <div class="entry-edit-head">
+    	<h4>Order Totals</h4>
+    </div>
+    <div id="order-totals" class="order-totals">
+    	<table cellspacing="0" cellpadding="5" >
+			<tbody>
+		    	<tr>
+					<td style="" class="a-right" colspan="1">
+						Base Total   
+					</td>
+					<td style="" class="a-right">
+		    			<span class="price"><?php echo $this->getBaseTotal();?>$</span>    
+		    		</td>
+				</tr>
+				<tr>
+					<td style="" class="a-right" colspan="1">
+						Shipping Charges 
+					</td>
+					<td style="" class="a-right">
+		    			<span class="price"><?php echo $this->getShippingCharges();?>$</span>    
+		    		</td>
+				</tr>
+		    	<tr>
+				    <td style="" class="a-right" colspan="1">
+				        <strong>Grand Total</strong>
+				    </td>
+				    <td style="" class="a-right">
+				        <strong><span class="price"><?php echo $this->getGrantTotal();?>$</span></strong>
+				    </td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+</div>
+
+       

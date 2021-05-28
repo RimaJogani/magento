@@ -1,0 +1,28 @@
+<?php $shippingMethodTitle = $this->getShippingMethodTitle(); ?>
+<?php $cart = $this->getCart();?>
+<?php if($cart):?>
+    <?php $cart_id = $cart->getId();?>
+    <?php $shippingcode = $cart->shipping_method_code;?>
+<?php endif;?>
+<form id="shippingmethodform" method="post" action="<?php echo $this->getUrl('order/adminhtml_order_create/shippingmethod',['customer_id'=>$this->getRequest()->getParam('id'),'cart_id'=> $cart_id]);?>">
+<?php echo $this->getBlockHtml('formkey');?>
+<div class="entry-edit">
+    <div class="entry-edit-head"><h4>Shipping Method</h4></div>
+    <fieldset>
+        <span class="nowrap" style="font-size:10px;">
+        	<?php foreach($shippingMethodTitle as $key => $value):?>
+                <?php //echo $key;?>
+				<input type="radio" name="shippingmethod" value="<?php echo $key.' '.$value->getconfigData('price');?>" <?php echo $shippingcode == $key ? "checked" : "" ?> />
+				<?php echo $value->getconfigData('name').'     '. $value->getconfigData('price'); ?><br>
+				<?php endforeach;?>	
+        </span>
+     <div class="form-buttons-left">
+            <button type="submit" form="shippingmethodform"><span>Save Method</span></button>
+        </div>
+    </fieldset>
+</div>
+</form>
+
+    
+    	
+
