@@ -25,7 +25,6 @@ class Rima_Order_Adminhtml_OrderController extends Mage_Adminhtml_Controller_Act
     {
         try
         {
-            echo "<pre>";
                 $customer_id = $this->getRequest()->getParam('id');
 
                 $cart = Mage::getModel('order/cart');
@@ -42,6 +41,8 @@ class Rima_Order_Adminhtml_OrderController extends Mage_Adminhtml_Controller_Act
                    $orderModel = Mage::getModel('order/order');
                    $orderModel->customer_id = $customer_id;
                    $orderModel->total = $cart->total;
+                   $orderModel->firstname = $cart->firstname;
+                    $orderModel->lastname = $cart->lastname;
                    $orderModel->shipping_amount = $cart->shipping_amount;
                    $orderModel->shipping_method_code = $cart->shipping_method_code;
                    $orderModel->payment_method_code = $cart->payment_method_code;
@@ -62,8 +63,8 @@ class Rima_Order_Adminhtml_OrderController extends Mage_Adminhtml_Controller_Act
                     foreach ($cartItems as $key => $itemData) 
                     {
                         $orderItem = Mage::getModel('order/order_item');
-                        $order_id = Mage::getModel('order/order')->load($customer_id , 'customer_id')->getOrderId();
-                        $orderItem->order_id = $order_id;
+                        
+                        $orderItem->order_id = $orderModel->getId();
                         $orderItem->product_id = $itemData['product_id'];
                         $orderItem->quantity = $itemData['quantity'];
                         $orderItem->base_price = $itemData['base_price'];
@@ -86,8 +87,8 @@ class Rima_Order_Adminhtml_OrderController extends Mage_Adminhtml_Controller_Act
                     foreach ($cartAddresses as $key => $addressData) 
                     {
                         $orderAddress = Mage::getModel('order/order_address');
-                        $order_id = Mage::getModel('order/order')->load($customer_id , 'customer_id')->getOrderId();
-                        $orderAddress->order_id = $order_id;
+                        
+                        $orderAddress->order_id = $orderModel->getId();
                         $orderAddress->customer_id = $customer_id;
                         $orderAddress->cart_address_id = $addressData['address_id'];
                         $orderAddress->customer_firstname = $addressData['firstname'];
@@ -106,19 +107,24 @@ class Rima_Order_Adminhtml_OrderController extends Mage_Adminhtml_Controller_Act
                     
 
                     $cartItem = Mage::getModel('order/cart_item');
-                    $cartItemCollection = $cartItem->getCollection();
-                    $cartItemCollection->getselect()
-                        ->reset(Zend_Db_Select::FROM)
-                        ->reset(Zend_Db_Select::COLUMNS)
-                        ->from('cart_item')
-                        ->where('cart_id = ?' , $cart_id);
-                    $cartItems = $cartItemCollection->getData();
+                    $cartItemCollection = $cartItem->getCollection()
+                        ->addFieldToFilter('cart_id', ['eq' => $cart_id]);
 
-                    foreach ($cartItems as $key => $value) {
+                    foreach ($cartItemCollection as $key => $value) {
                         Mage::getModel('order/cart_item')->load($value['item_id'])->delete();       
                     }
+
+
+                    $cartAddress = Mage::getModel('order/cart_address');
+                    $addressCollection = $cartAddress->getCollection()
+                        ->addFieldToFilter('cart_id', ['eq' => $cart_id]);
+                        
+                   foreach ($addressCollection as $key => $value) 
+                   {
+                        Mage::getModel('order/cart_address')->load($value['address_id'])->delete();       
+                    }
+
                     
-                    $cartAddress = Mage::getModel('order/cart_address')->load($customer_id ,'customer_id')->delete();
 
                }
                else

@@ -113,7 +113,7 @@ class Rima_Order_Block_Adminhtml_Customer_Grid extends Mage_Adminhtml_Block_Widg
 
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=> true));
+        return $this->getUrl('*/*/index', array('_current'=> true));
     }
 
     public function getRowUrl($row)

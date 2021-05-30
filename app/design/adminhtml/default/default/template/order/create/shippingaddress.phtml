@@ -1,19 +1,13 @@
-<?php echo $this->getChildHtml('shippingaddress_form');?>
 <?php $cart = $this->getCart();?>
-<?php $countries = $this->getCountryName();?>
-<?php if($cart):?>
-	<?php $cart_id = $cart->getId();?>
-<?php endif;?>
 <?php $shippingAddress =  $this->getShippingAddress();?>
-<?php if($shippingAddress):?>
-	<?php $addressId = $shippingAddress->address_id;?>
-<?php endif;?>
+
+<?php $countries = $this->getCountryName();?>
 <div class="entry-edit">
 
     <div class="entry-edit-head">
         <h4 class="icon-head fieldset-legend head-billing-address">Shipping Address</h4>
      </div>
-      <form id="shippingform" method="post" action="<?php echo $this->getUrl('order/adminhtml_order_create/shippingaddress',['customer_id'=>$this->getRequest()->getParam('id'),'cart_id'=> $cart_id,'address_id'=>$addressId])?>">
+      <form id="shippingform" method="post" action="<?php echo $this->getUrl('order/adminhtml_order_create/shippingaddress',['id'=>$this->getRequest()->getParam('id')])?>">
     <?php echo $this->getBlockHtml('formkey');?>
     <fieldset class="np">
 
@@ -38,7 +32,7 @@
 							        <td class="label"><label>Last Name <span class="required">*</span></label>
 							        </td>
 	    							<td class="value">
-	        							<input  name="shipping[lastname]" <?php if($shippingAddress):?> value="<?php echo $shippingAddress->lastname ?>" <?php endif;?> class=" required-entry input-text required-entry" type="text">            
+	        							<input  name="shipping[lastname]" <?php if($shippingAddress):?> value="<?php echo $shippingAddress->lastname ?>" <?php endif;?> class=" required-entry input-text required-entry" type="text" >            
 	        						</td>
 	    					</tr>
 
@@ -46,7 +40,7 @@
 	        					<td class="label"><label>Street Address <span class="required">*</span></label>
 	        					</td>
 	    						<td class="value">
-	        						<div class="multi-input"><input name="shipping[street]" <?php if($shippingAddress):?> value="<?php echo $shippingAddress->street ?>" <?php endif;?> class="input-text required-entry" type="text">
+	        						<div class="multi-input"><input name="shipping[street]" <?php if($shippingAddress):?> value="<?php echo $shippingAddress->street ?>" <?php endif;?> class="input-text required-entry" type="text" >
 									</div>
 									           
 								</td>
@@ -64,7 +58,7 @@
 							    <td class="value">
 							        <select id="shipping_country_id" name="shipping[country_id]" class="required-entry required-entry select">
                                     <?php foreach ($countries as $key => $country) : ?>
-                                        <option value="<?php echo $country['country_id'];?>" <?php if($shippingAddress['country_id'] == $country['country_id']){ echo "selected";} ?>><?php echo $country['name'];?></option>
+                                        <option value="<?php echo $country['country_id'];?>" <?php if($shippingAddress['country_id'] == $country['country_id']){ echo "selected";} ?> ><?php echo $country['name'];?></option>
                                     <?php endforeach; ?>
                                 </select>                 
 							    </td>
@@ -74,14 +68,14 @@
 								<td class="label"><label>State <span class="required" style="display: none;">*</span></label>
 								</td>
 								<td class="value">
-							        <input name="shipping[region]" <?php if($shippingAddress):?> value="<?php echo $shippingAddress->region?>" <?php endif;?> class=" required-entry input-text required-entry" type="text">            
+							        <input name="shipping[region]" <?php if($shippingAddress):?> value="<?php echo $shippingAddress->region?>" <?php endif;?> class=" required-entry input-text required-entry" type="text" >            
 							    </td>
 							</tr>
 							<tr>
 						        <td class="label"><label>ZipCode <span class="required">*</span></label>
 						        </td>
 							    <td class="value">
-							        <input name="shipping[postcode]" <?php if($shippingAddress):?> value="<?php echo $shippingAddress->postcode?>" <?php endif;?> class=" required-entry input-text required-entry" type="text">            
+							        <input name="shipping[postcode]" <?php if($shippingAddress):?> value="<?php echo $shippingAddress->postcode?>" <?php endif;?> class=" required-entry input-text required-entry" type="number">             
 							    </td>
 						    </tr>
 

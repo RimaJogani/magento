@@ -1,20 +1,14 @@
-<?php echo $this->getChildHtml('billingaddress_form');?>
+<?php //echo "<pre>";?>
 <?php $cart = $this->getCart();?>
+<?php $billingAddress = $this->getBillingAddress();?>
+<?php //die();?>
 <?php $countries = $this->getCountryName();?>
-<?php if($cart):?>
-	<?php $cart_id = $cart->getId();?>
-<?php endif;?>
-<?php $billingAddress =  $this->getBillingAddress();?>
-<?php if($billingAddress):?>
-	<?php $addressId = $billingAddress->address_id;?>
-<?php endif;?>
-<?php //print_r($billingAddress);die();?>
 <div class="entry-edit">
 
     <div class="entry-edit-head">
         <h4 class="icon-head fieldset-legend head-billing-address">Billing Address</h4>
     </div>
-    <form id="billingform" method="post" action="<?php echo $this->getUrl('order/adminhtml_order_create/billingaddress',['customer_id'=>$this->getRequest()->getParam('id'),'cart_id'=> $cart_id,'address_id'=>$addressId])?>">
+    <form id="billingform" method="post" action="<?php echo $this->getUrl('order/adminhtml_order_create/billingaddress',['id'=>$this->getRequest()->getParam('id')])?>">
     <?php echo $this->getBlockHtml('formkey');?>
     <fieldset class="np">
 
@@ -27,7 +21,7 @@
 	        					<td class="label"><label>First Name <span class="required">*</span></label>
 	        					</td>
 	    						<td class="value">
-	        						<input name="billing[firstname]" <?php if($billingAddress):?> value="<?php echo $billingAddress->firstname ?>" <?php endif;?> class=" required-entry input-text required-entry" type="text">           
+	        						<input name="billing[firstname]" <?php if($billingAddress):?> value="<?php echo $billingAddress->firstname ?>" <?php endif;?> class=" required-entry input-text required-entry" type="text" required>           
 	    						</td>
 							</tr>
 									
@@ -35,7 +29,7 @@
 						        <td class="label"><label>Last Name <span class="required">*</span></label>
 						        </td>
 								<td class="value">
-	    							<input name="billing[lastname]" <?php if($billingAddress):?> value="<?php echo $billingAddress->lastname ?>" <?php endif;?>  class=" required-entry input-text required-entry" type="text">            
+	    							<input name="billing[lastname]" <?php if($billingAddress):?> value="<?php echo $billingAddress->lastname ?>" <?php endif;?>  class=" required-entry input-text required-entry" type="text" required>            
 	    						</td>
 	    					</tr>
 
@@ -44,7 +38,7 @@
 	        					</td>
 	    						<td class="value">
 									<div class="multi-input">
-										<input name="billing[street]" <?php if($billingAddress):?> value="<?php echo $billingAddress->street ?>" <?php endif;?>  class="input-text" type="text">
+										<input name="billing[street]" <?php if($billingAddress):?> value="<?php echo $billingAddress->street ?>" <?php endif;?>  class="input-text" type="text" required>
 									</div>            
 								</td>
 	    					</tr>
@@ -52,7 +46,7 @@
 	        					<td class="label"><label>City <span class="required">*</span></label>
 	        					</td>
 							    <td class="value">
-							        <input  name="billing[city]" <?php if($billingAddress):?> value="<?php echo $billingAddress->city ?>" <?php endif;?>  class=" required-entry input-text required-entry" type="text">            
+							        <input  name="billing[city]" <?php if($billingAddress):?> value="<?php echo $billingAddress->city ?>" <?php endif;?>  class=" required-entry input-text required-entry" type="text" required>            
 							    </td>
 	    					</tr>
 	    					<tr>
@@ -61,7 +55,7 @@
 							    <td class="value">
 							        <select id="shipping_country_id" name="billing[country_id]" class="required-entry required-entry select">
                                     <?php foreach ($countries as $key => $country) : ?>
-                                        <option value="<?php echo $country['country_id'];?>" <?php if($billingAddress['country_id'] == $country['country_id']){ echo "selected";} ?>><?php echo $country['name'];?></option>
+                                        <option value="<?php echo $country['country_id'];?>" <?php if($billingAddress['country_id'] == $country['country_id']){ echo "selected";} ?> required><?php echo $country['name'];?></option>
                                     <?php endforeach; ?>
                                 </select>     
 							    </td>
@@ -71,14 +65,14 @@
 								<td class="label"><label>State <span class="required" style="display: none;">*</span></label>
 								</td>
 								<td class="value">
-							        <input name="billing[region]" <?php if($billingAddress):?> value="<?php echo $billingAddress->region ?>" <?php endif;?> class=" required-entry input-text required-entry" type="text">            
+							        <input name="billing[region]" <?php if($billingAddress):?> value="<?php echo $billingAddress->region ?>" <?php endif;?> class=" required-entry input-text required-entry" type="text" required>            
 							    </td>
 							</tr>
 							<tr>
 						        <td class="label"><label>ZipCode <span class="required">*</span></label>
 						        </td>
 							    <td class="value">
-							        <input  name="billing[postcode]" <?php if($billingAddress):?> value="<?php echo $billingAddress->postcode ?>" <?php endif;?>  class=" required-entry input-text required-entry" type="text">            
+							        <input  name="billing[postcode]" <?php if($billingAddress):?> value="<?php echo $billingAddress->postcode ?>" <?php endif;?>  class=" required-entry input-text required-entry" type="number" required>            
 							    </td>
 						    </tr>
 	        			</tbody>

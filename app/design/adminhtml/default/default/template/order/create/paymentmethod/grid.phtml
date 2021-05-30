@@ -4,7 +4,7 @@
 	<?php $cart_id = $cart->getId();?>
 	<?php $paymentcode = $cart->payment_method_code;?>
 <?php endif;?>
-<form id="paymentform" method="post" action="<?php echo $this->getUrl('order/adminhtml_order_create/paymentmethod',['customer_id'=>$this->getRequest()->getParam('id'),'cart_id'=> $cart_id]);?>">
+<form id="paymentform" method="post" action="<?php echo $this->getUrl('order/adminhtml_order_create/paymentmethod',['id'=>$this->getRequest()->getParam('id')]);?>">
 <?php echo $this->getBlockHtml('formkey');?>
 <div class="entry-edit">
     <div class="entry-edit-head"><h4>Payment Method</h4></div>

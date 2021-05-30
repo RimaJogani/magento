@@ -16,9 +16,9 @@
             <action method="addJs"><file>rima/mage.js</file></action>
 
         </reference>
-        <reference name = "root">
+        <reference name = "content">
             <!-- Main Block  -->
-            <block type="order/adminhtml_order_create" name="content" template="order/create.phtml">
+            <block type="order/adminhtml_order_create" name="cart" template="order/create.phtml">
                 <!-- Product Block -->
                 <block type="order/adminhtml_order_create_product" name="product"  template="order/create/product.phtml">
                     <block type="order/adminhtml_order_create_product_grid" name="product_grid">
@@ -32,13 +32,9 @@
                 </block>
                 <!-- Billing Address -->
                 <block type="order/adminhtml_order_create_billingaddress" name="billingaddress"  template="order/create/billingaddress.phtml">
-                    <block type="order/adminhtml_order_create_billingaddress_form" name="billingaddress_form">
-                    </block>
                 </block>
                 <!-- Shipping Address -->
                 <block type="order/adminhtml_order_create_shippingaddress" name="shippingaddress"  template="order/create/shippingaddress.phtml">
-                    <block type="order/adminhtml_order_create_shippingaddress_form" name="shippingaddress_form">
-                    </block>
                 </block>
                 <!-- Payment Method -->
                 <block type="order/adminhtml_order_create_paymentmethod" name="paymentmethod"  template="order/create/paymentmethod.phtml">

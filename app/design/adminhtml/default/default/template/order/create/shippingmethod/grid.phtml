@@ -4,7 +4,7 @@
     <?php $cart_id = $cart->getId();?>
     <?php $shippingcode = $cart->shipping_method_code;?>
 <?php endif;?>
-<form id="shippingmethodform" method="post" action="<?php echo $this->getUrl('order/adminhtml_order_create/shippingmethod',['customer_id'=>$this->getRequest()->getParam('id'),'cart_id'=> $cart_id]);?>">
+<form id="shippingmethodform" method="post" action="<?php echo $this->getUrl('order/adminhtml_order_create/shippingmethod',['id'=>$this->getRequest()->getParam('id')]);?>">
 <?php echo $this->getBlockHtml('formkey');?>
 <div class="entry-edit">
     <div class="entry-edit-head"><h4>Shipping Method</h4></div>

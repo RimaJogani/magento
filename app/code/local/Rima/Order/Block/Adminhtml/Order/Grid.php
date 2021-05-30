@@ -12,13 +12,18 @@ class Rima_Order_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Widget_
     protected function _prepareCollection()
     {
         $collection = Mage::getModel('order/order')->getCollection();
-           $collection->getSelect()
-            ->join(['order_address' => 'order_address'],
-                'order_address.order_id = main_table.order_id',
-                ['order_address.customer_firstname','order_address.customer_lastname'])
-             ->where('order_address.address_type = ? ','billing');
-            
-       //echo $collection->getSelect();die();
+//            //$query = $collection->getSelect()
+
+//            $collection->getSelect()->join( array('order_address'=> 'order_address'),
+// 'order_address.order_id = main_table.order_id',
+// array('order_address.customer_firstname','order_address.customer_lastname')->WHERE('order_address.address_type =?''billing');
+//             // ->join([ 'order_address'=>'order_address'],
+//             //     'order_address.order_id = main_table.order_id',
+//             //     ['order_address.customer_firstname','order_address.customer_lastname'])
+//             //  ->where('order_address.address_type = ? ','billing');
+          
+//           echo $collection->getSelect();
+//           die();  
         $this->setCollection($collection);
 
         return parent::_prepareCollection();
@@ -28,24 +33,33 @@ class Rima_Order_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Widget_
     protected function _prepareColumns()
     {
 
-        $this->addColumn('real_order_id', array(
+        $this->addColumn('order_id', array(
             'header'=> Mage::helper('order')->__('Order #'),
+            'type'=>'number',
             'index' => 'order_id',
         ));
         
-        $this->addColumn('customer_firstname', array(
+        $this->addColumn('firstname', array(
             'header' => Mage::helper('order')->__('First Name'),
-            'index' => 'customer_firstname',
+            'index' => 'firstname',
         ));
 
-        $this->addColumn('customer_lastname', array(
+        $this->addColumn('lastname', array(
             'header' => Mage::helper('order')->__('Last Name'),
-            'index' => 'customer_lastname',
+            'index' => 'lastname',
         ));
         
         $this->addColumn('total', array(
             'header' => Mage::helper('order')->__('Total'),
             'index' => 'total',
+        ));
+         $this->addColumn('shipping_amount', array(
+            'header' => Mage::helper('order')->__('Shipping Amount'),
+            'index' => 'shipping_amount',
+        ));
+         $this->addColumn('payment_method_code', array(
+            'header' => Mage::helper('order')->__('Payment Method Code'),
+            'index' => 'payment_method_code',
         ));
         $this->addColumn('created at', array(
             'header' => Mage::helper('order')->__('Created At'),

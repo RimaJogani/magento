@@ -1,2 +1,3 @@
-<?php echo $this->getChildHtml('paymentmethod_grid');?>
+<?php $cart = $this->getCart();?>
+<?php echo $this->getChild('paymentmethod_grid')->setCart($cart)->toHtml();?>
 

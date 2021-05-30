@@ -1,4 +1,4 @@
-<!-- <div style="float: right;"><?php //echo $this->getButtonsHtml(); ?><?php //echo $this->getButtonHtml(); ?></div> -->
+<?php $cart = $this->getCart();?>
 <div style="float: right">  
       <a href="<?php echo $this->getUrl('order/adminhtml_order/index')?>"><button type="button"> Back</button></a>           
       <a href="<?php echo $this->getUrl('order/adminhtml_order/saveorder',['id'=>$this->getRequest()->getParam('id')])?>"><button type="button" name="save"> Submit Order</button></a>
@@ -8,48 +8,37 @@
 <hr>
 
 <div>
-  <!-- <div class="entry-edit">
-
-    <div class="entry-edit-head">
-      <div style="float: right;">
-        <button id="id_b24aefb9127869eaf32b724490cb8f61" title="producr" type="button" class="scalable add"  style=""><span><span><span>Please Select Product to Add Cart</span></span></span>
-        </button>
-      </div>
-      <h4 class="fieldset-legend ">Please Select Product to Add Cart</h4>
-    </div> 
-  </div> -->
-
 	<?php echo $this->getChildHtml('product'); ?>
 </div>
 <hr>
 <div>
-  <?php echo $this->getChildHtml('cartitem') ?>
+  <?php echo $this->getChild('cartitem')->setCart($cart)->toHtml(); ?>
 </div>
 <hr>
 <div>
-	<?php echo $this->getChildHtml('account'); ?>
+	<?php echo $this->getChild('account')->setCart($cart)->toHtml(); ?>
 </div>
 <hr>
 <div style="display: flex;">
     <div style="width:60%">
-      <?php echo $this->getChildHtml('billingaddress'); ?>
+      <?php echo $this->getChild('billingaddress')->setCart($cart)->toHtml();?>
     </div>
     <div style="margin-left:20px; width:70%">
-       <?php echo $this->getChildHtml('shippingaddress'); ?>
+       <?php echo $this->getChild('shippingaddress')->setCart($cart)->toHtml(); ?>
     </div>
 </div>
 <hr>
 <div style="display: flex;">
     <div style="width:60%">
-      <?php echo $this->getChildHtml('paymentmethod'); ?>
+      <?php echo $this->getChild('paymentmethod')->setCart($cart)->toHtml(); ?>
     </div>
     <div style="margin-left:20px; width:70%">
-       <?php echo $this->getChildHtml('shippingmethod'); ?>
+       <?php echo $this->getChild('shippingmethod')->setCart($cart)->toHtml(); ?>
     </div>
 </div>
 
 <div style="margin-left:470px; width:60%">
-  <?php echo $this->getChildHtml('total');?>
+  <?php echo $this->getChild('total')->setCart($cart)->toHtml();?>
   
 </div>
 
