@@ -8,11 +8,6 @@ class Rima_Order_Block_Adminhtml_Order_Create_Product extends Mage_Adminhtml_Blo
         $this->_blockGroup = 'order';
         $this->_controller = 'adminhtml_order_create_product';
         parent::__construct();
-        // $this->_addButton('addproduct', array(
-        //     'label'     => $this->__('Add product'),
-        //     'onclick'   => 'setLocation(\'' . $this->getCreateUrl() .'\')',
-        //     'class'     => 'add',
-        // ));
     }
 
 

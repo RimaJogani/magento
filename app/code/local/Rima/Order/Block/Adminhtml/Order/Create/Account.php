@@ -9,8 +9,7 @@ class Rima_Order_Block_Adminhtml_Order_Create_Account extends Mage_Adminhtml_Blo
 	public function __construct()
     {
         parent::__construct();
-    	// $this->_blockGroup = 'order';
-     //    $this->_controller = 'adminhtml_order_create_account';
+    	
     }
     public function getCustomer()
     {	

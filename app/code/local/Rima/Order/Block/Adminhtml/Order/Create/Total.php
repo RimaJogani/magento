@@ -34,7 +34,7 @@ class Rima_Order_Block_Adminhtml_Order_Create_Total extends Mage_Adminhtml_Block
         {
             foreach ($items->getData() as $item) 
             {
-               $total  += $item['base_price'];
+               $total  += $item['price'];
             }
           $cart->total = $total;
           $cart->save();

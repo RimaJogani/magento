@@ -18,7 +18,6 @@ class Rima_Order_Adminhtml_Order_CreateController extends Mage_Adminhtml_Control
     { 
         try 
         {
-            //echo "<pre>";
             $productIds = (array)$this->getRequest()->getParam('product');
             if(!$productIds)
             {
@@ -46,10 +45,8 @@ class Rima_Order_Adminhtml_Order_CreateController extends Mage_Adminhtml_Control
             }
             
             $cart = $this->getCart();
-            //print_r($cart);die();
             foreach ($productIds as $key => $productId) 
             {
-              //print_r($productId);
               $product = Mage::getSingleton('catalog/product')->load($productId);
               $cart->addItemToCart($product,1,true); 
 
@@ -95,7 +92,6 @@ class Rima_Order_Adminhtml_Order_CreateController extends Mage_Adminhtml_Control
     {
       try
       {
-        //echo "<pre>";
         $customerId = $this->getRequest()->getParam('id');
         if(!$customerId)
         {
@@ -103,8 +99,6 @@ class Rima_Order_Adminhtml_Order_CreateController extends Mage_Adminhtml_Control
             
         }
         $quantities = $this->getRequest()->getParam('quantity');
-        //print_r($quantities);
-        //die();
         foreach ($quantities as $cartItemId => $quantity) 
         {
           //print_r($quantity);
@@ -119,10 +113,9 @@ class Rima_Order_Adminhtml_Order_CreateController extends Mage_Adminhtml_Control
           $cartItem = Mage::getModel('order/cart_item')->load($cartItemId);
 
           $basePrice =  $quantity * $cartItem->price - ($cartItem->discount * $quantity);
-          $cartItem->base_price = $basePrice; 
+          $cartItem->price = $basePrice; 
           $cartItem->quantity = $quantity;
           $cartItem->updated_at = date('Y-m-d H:i:s');
-         // print_r($cartItem);die;
           $cartItem->save();  
           $this->_getSession()->addSuccess(
                         $this->__('Item Quantity successfully update into cart')
@@ -167,11 +160,9 @@ class Rima_Order_Adminhtml_Order_CreateController extends Mage_Adminhtml_Control
     {
       try
       {
-        echo "<pre>";
         $cart = $this->getCart();
         $customer_id = $cart->getCustomerId();
         $billingData = $this->getRequest()->getPost('billing');
-        print_r($billingData);
         $cartBillingAddress = $cart->getBillingAddress();
         if($cartBillingAddress->getId())
         {
@@ -192,17 +183,15 @@ class Rima_Order_Adminhtml_Order_CreateController extends Mage_Adminhtml_Control
             if($customerBillingAddress->getId())
             {
                 $customerBillingAddress->updated_at = date("Y-m-d H:i:s");
-                $customerBillingAddress->addData($billingData);
-                //print_r($customerBillingAddress);
             }
             else
             {
 
-                $customerBillingAddress->setEntityTypeId($customerBillingAddress->getEntityTypeId());
+                $customerBillingAddress->setParentId($customer_id);
                 $customerBillingAddress->setIsDefaultBilling(1);
-                $customerBillingAddress->created_at = date("Y-m-d H:i:s");
-                $customerBillingAddress->addData($billingData);
+                $customerBillingAddress->setCreatedAt(date("Y-m-d H:i:s"));
             }
+            $customerBillingAddress->addData($billingData);
             $customerBillingAddress->save();
         }
         
@@ -220,7 +209,6 @@ class Rima_Order_Adminhtml_Order_CreateController extends Mage_Adminhtml_Control
     {
       try
       {
-          echo "<pre>";
           $cart = $this->getCart();
           $customer_id = $cart->getCustomerId();
           $shippingData = $this->getRequest()->getParam('shipping');
@@ -372,7 +360,7 @@ class Rima_Order_Adminhtml_Order_CreateController extends Mage_Adminhtml_Control
             $cart->updated_at = date("Y-m-d H:i:s");
             $cart->save();
             $this->_getSession()->addSuccess(
-                            $this->__('Payment Method Save')
+                            $this->__('Shipping  Method Save')
                         );  
         } 
       }
