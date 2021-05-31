@@ -5,12 +5,12 @@ $installer->startSetUp();
 
 $installer->run("
 
-DROP TABLE IF EXISTS {$this->getTable('order/cart')};
-DROP TABLE IF EXISTS {$this->getTable('order/cart_item')};
-DROP TABLE IF EXISTS {$this->getTable('order/cart_address')};
-DROP TABLE IF EXISTS {$this->getTable('order/order')};
-DROP TABLE IF EXISTS {$this->getTable('order/order_item')};
-DROP TABLE IF EXISTS {$this->getTable('order/order_address')};
+-- DROP TABLE IF EXISTS {$this->getTable('order/cart')};
+-- DROP TABLE IF EXISTS {$this->getTable('order/cart_item')};
+-- DROP TABLE IF EXISTS {$this->getTable('order/cart_address')};
+-- DROP TABLE IF EXISTS {$this->getTable('order/order')};
+-- DROP TABLE IF EXISTS {$this->getTable('order/order_item')};
+-- DROP TABLE IF EXISTS {$this->getTable('order/order_address')};
 DELETE FROM `core_resource` WHERE `code` = 'order_setup';
 
 ");
