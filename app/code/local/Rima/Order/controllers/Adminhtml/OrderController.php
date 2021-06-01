@@ -145,6 +145,35 @@ class Rima_Order_Adminhtml_OrderController extends Mage_Adminhtml_Controller_Act
     }
 
 
+    public function viewOrderAction()
+    {
+        $this->loadLayout();
+        $order = $this->getOrder();
+        $this->getLayout()->getBlock('order_view')->setOrder($order);
+        $this->renderLayout();
+            
+    }
+
+    public function getOrder()
+    {
+       
+        $orderId = $this->getRequest()->getParam('id');
+        if(!$orderId)
+        {
+            throw new Exception("Order Id Not Found");
+            
+        }
+       $order = Mage::getModel('order/order')->load($orderId);
+       
+        if(!$order->getData())
+        {
+            throw new Exception("order not created", 1);
+            
+        }
+        return $order;
+    }
+
+
 
     
    

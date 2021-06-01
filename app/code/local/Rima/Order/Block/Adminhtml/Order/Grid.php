@@ -54,7 +54,19 @@ class Rima_Order_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Widget_
             'header' => Mage::helper('order')->__('Created At'),
             'index' => 'created_at',
         ));
-
+        $this->addColumn('action',[
+            'header' => 'Action',
+            'width' => '20px',
+            'type' => 'action',
+            'getter' => 'getId',
+            'actions' => [
+                [
+                    'caption' => 'View',
+                    'url' => ['base' => 'order/adminhtml_order/vieworder'],
+                    'field' => 'id',
+                ]
+            ]
+        ]);   
         
         return parent::_prepareColumns();
     }

@@ -5,6 +5,13 @@
             <block type="order/adminhtml_order"></block>
         </reference>
     </order_adminhtml_order_index>
+
+    <order_adminhtml_order_vieworder>
+        <reference name="content">
+            <block type="order/adminhtml_order_view" name="order_view" template="order/view.phtml"></block>
+        </reference>
+    </order_adminhtml_order_vieworder>
+
     <order_adminhtml_order_customer_index>
         <reference name="content">
             <block type="order/adminhtml_customer"></block>

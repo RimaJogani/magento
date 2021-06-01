@@ -80,7 +80,7 @@
 	        	</div>
 	        </div>
 	    	<div class="order-save-in-address-book">
-	        	<input name="billing[save_in_address_book]" type="checkbox">
+	        	<input name="billing[save_in_address_book]" type="checkbox" <?php if($billingAddress->save_in_address_book):?> checked <?php endif;?>>
 	        	<label>Save in address book</label>
 	    	</div>
 	        	
